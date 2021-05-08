@@ -16,8 +16,8 @@ services:
             - '27017:27017'
         volumes:
                 - mongodb:/data/db
-    volumes:
-        mongodb:    
+volumes:
+    mongodb:    
 
 
 
