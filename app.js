@@ -4,7 +4,12 @@ var mongoose = require('mongoose');;
 var {studentModel}=require('./models/studentModel')
 
 
-mongoose.connect("mongodb://mongo:27017/docker-node-mongo",{useNewUrlParser:true})
+mongoose.connect(
+    "mongodb://mongo:27017/docker-node-mongo",
+    {useNewUrlParser:true}
+    )
+    .then(() => console.log('MongoDB Connected'))
+    .catch(err => console.log(err));
 
 
 let app=express()
@@ -77,8 +82,6 @@ var x= getNum1 +getNum2
 res.json({"sum":x})
 
 })
-
-
 
 
 app.listen( process.env.PORT || 3000, ()=>{
