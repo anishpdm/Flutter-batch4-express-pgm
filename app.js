@@ -1,5 +1,10 @@
 var express=require('express')
 var bodyParser = require('body-parser')
+var mongoose = require('mongoose');;
+var {studentModel}=require('./models/studentModel')
+
+
+mongoose.connect("mongodb://mongo:27017/docker-node-mongo",{useNewUrlParser:true})
 
 
 let app=express()
@@ -16,16 +21,51 @@ app.get('/',(req,res)=>{
 })
 
 
+app.get('/viewall', async (req,res)=>{
+
+  try{
+
+    var result= await studentModel.find()
+
+    res.json(result)
+
+  }
+
+  catch(error)
+  {
+    res.send(error)
+
+
+  }
+
+})
 
 
 app.post('/read', (req,res)=>{
+  
 
-    var getName= req.body.name
-    var getRoll= req.body.rollno
+var studentObject=new studentModel(req.body);
+
+studentObject.save(
+    (error)=>{
+
+        if(error)
+        {
+            res.send("ERROR" + error)
+        }
+        else{
+            res.json( {"status":"success"})
+        }
 
 
-    res.json( {"name" :getName,"rollno" :getRoll}  )
-}  )
+    }
+)
+
+
+})
+
+
+
 
 
 app.post('/add',(req,res)=>{
