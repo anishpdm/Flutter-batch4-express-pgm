@@ -4,7 +4,7 @@ var mongoose = require('mongoose');;
 var {studentModel}=require('./models/studentModel')
 
 
-mongoose.connect("mongodb://mongo:27017/docker-node-mongo",{useNewUrlParser:true})
+mongoose.connect("mongodb+srv://logix:linkurcodes@cluster0.vlafl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{useNewUrlParser:true})
 
 
 let app=express()
