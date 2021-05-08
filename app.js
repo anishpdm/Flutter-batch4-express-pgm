@@ -5,7 +5,7 @@ var {studentModel}=require('./models/studentModel')
 
 
 mongoose.connect(
-    "mongodb://localhost:27017/testdb",
+    "mongodb://mongo:27017/testdb",
     {useNewUrlParser:true}
     )
     .then(() => console.log('MongoDB Connected'))
